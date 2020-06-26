@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.3.1.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id 'war'
 }
 
 group = 'com.example'
@@ -9,6 +10,8 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
+	// 优先使用本地仓库
+	mavenLocal()
 	mavenCentral()
 }
 
@@ -17,6 +20,10 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.0.RELEASE'
+	providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'
+	// 解析jsp
+	compile group: 'org.apache.tomcat', name: 'tomcat-jasper', version: '9.0.36'
 }
 
 test {
