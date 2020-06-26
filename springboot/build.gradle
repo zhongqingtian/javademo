@@ -16,14 +16,22 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation('org.springframework.boot:spring-boot-starter') {
+		exclude module: "tomcat-embed-el"
+	}
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.0.RELEASE'
+	compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.0.RELEASE') {
+		// 排除web里面内嵌的tomcat
+		exclude( module: 'spring-boot-starter-tomcat')
+	}
 	providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'
 	// 解析jsp
 	compile group: 'org.apache.tomcat', name: 'tomcat-jasper', version: '9.0.36'
+	
+	// 使用jetty 启动 替换tomcat
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-jetty', version: '2.3.0.RELEASE'
 }
 
 test {
