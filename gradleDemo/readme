@@ -1,0 +1,35 @@
+/*
+
+def i=18
+
+println(i)
+
+def list =['a','b']
+// 向数组添加一个元素
+list << 'c'
+// 取出下标2的元素
+println list.get(2)
+*/
+
+// 定义一个map
+/*
+def map =['key1':'value1','key2':'value2']
+// 添加键值
+map.key3 = 'value3'
+// 取出value
+println map.get('key2')
+*/
+
+// 闭包类型
+// 定义闭包
+def b1 = {
+    println "hello b1"
+}
+
+// 定义这个方法，方法里面需要闭包类型的参数
+def method1(Closure closure) { // Closure 表示参数是闭包类型
+    closure()
+}
+// 调用方法method1
+method1(b1)
+

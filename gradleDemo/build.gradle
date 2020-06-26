@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+/*指定所使用的仓库，mavenCentral()默认使用中央仓库，下载到本地*/
+repositories {
+    mavenLocal() // 先从本地仓库找jar包
+    mavenCentral() /// 没有再从中央仓库找
+}
+/*gradle工程所有的jar包的坐标都在dependencies属性内放置
+* 每一个jar包的坐标都有三个基本元素组成
+* group,name,version
+* testCompile 表示jar包在测试的时候起作用，该属性为jar包的作用域
+* 我们在gradle 里面添加坐标的时候都要带上jar包的作用域
+* */
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // 从maven官网复制对应包坐标过来
+    // https://mvnrepository.com/artifact/org.springframework/spring-context
+    compile group: 'org.springframework', name: 'spring-context', version: '5.2.7.RELEASE'
+}

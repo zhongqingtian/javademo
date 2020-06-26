@@ -1,0 +1,8 @@
+plugins {
+    id 'war'
+}
+
+dependencies {
+    // 引用使用dao模块
+    compile project(":gradle_service")
+}
